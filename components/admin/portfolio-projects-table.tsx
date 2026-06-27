@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
+import { SafeImage } from "@/components/ui/safe-image";
 import { Pencil, Trash2, ExternalLink, Star } from "lucide-react";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";
@@ -43,7 +43,7 @@ export function PortfolioProjectsTable({ projects }: { projects: PortfolioProjec
               <td className="px-5 py-4">
                 <div className="flex items-center gap-3">
                   <div className="relative h-10 w-14 rounded-lg overflow-hidden bg-ink-100 shrink-0">
-                    <Image src={project.featured_image} alt={project.title} fill className="object-cover" />
+                    <SafeImage src={project.featured_image} alt={project.title} fill className="object-cover" />
                   </div>
                   <div>
                     <p className="font-medium text-ink-900 dark:text-white max-w-[220px] truncate flex items-center gap-1.5">

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
+import { SafeImage } from "@/components/ui/safe-image";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Calendar, Building2, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -75,7 +75,7 @@ export default async function PortfolioDetailPage({
       <Reveal>
         <section className="container-px container mt-10">
           <div className="relative aspect-[16/9] rounded-3xl overflow-hidden bg-ink-100">
-            <Image src={project.featured_image} alt={project.title} fill className="object-cover" priority />
+            <SafeImage src={project.featured_image} alt={project.title} fill className="object-cover" priority />
           </div>
         </section>
       </Reveal>
@@ -136,7 +136,7 @@ export default async function PortfolioDetailPage({
             {project.gallery_images.map((img, i) => (
               <RevealItem key={i}>
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-ink-100">
-                  <Image src={img} alt={`${project.title} gallery image ${i + 1}`} fill className="object-cover" />
+                  <SafeImage src={img} alt={`${project.title} gallery image ${i + 1}`} fill className="object-cover" />
                 </div>
               </RevealItem>
             ))}
@@ -154,7 +154,7 @@ export default async function PortfolioDetailPage({
               <RevealItem key={p.id}>
                 <Link href={`/portfolio/${p.slug}`} className="group block">
                   <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-ink-100">
-                    <Image src={p.featured_image} alt={p.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <SafeImage src={p.featured_image} alt={p.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
                   </div>
                   <h3 className="mt-3 font-display font-semibold text-ink-900 dark:text-white group-hover:text-indigo-500 transition-colors">
                     {p.title}

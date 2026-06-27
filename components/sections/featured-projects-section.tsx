@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import { SafeImage } from "@/components/ui/safe-image";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reveal, RevealGroup, RevealItem } from "@/components/shared/reveal";
@@ -32,7 +32,7 @@ export async function FeaturedProjectsSection() {
             <RevealItem key={project.id}>
               <Link href={`/portfolio/${project.slug}`} className="group block">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-ink-100">
-                  <Image
+                  <SafeImage
                     src={project.featured_image}
                     alt={project.title}
                     fill

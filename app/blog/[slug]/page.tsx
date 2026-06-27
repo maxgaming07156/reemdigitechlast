@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
+import { SafeImage } from "@/components/ui/safe-image";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Clock, Calendar } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/shared/reveal";
@@ -90,7 +90,7 @@ export default async function BlogDetailPage({
         {post.cover_image && (
           <Reveal delay={0.1}>
             <div className="relative mt-8 aspect-[16/9] rounded-3xl overflow-hidden bg-ink-100">
-              <Image src={post.cover_image} alt={post.title} fill className="object-cover" priority />
+              <SafeImage src={post.cover_image} alt={post.title} fill className="object-cover" priority />
             </div>
           </Reveal>
         )}
@@ -134,7 +134,7 @@ export default async function BlogDetailPage({
                 <Link href={`/blog/${p.slug}`} className="group block">
                   <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-ink-100">
                     {p.cover_image && (
-                      <Image src={p.cover_image} alt={p.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                      <SafeImage src={p.cover_image} alt={p.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
                     )}
                   </div>
                   <h3 className="mt-3 font-display font-semibold text-ink-900 dark:text-white group-hover:text-indigo-500 transition-colors line-clamp-2">

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
+import { SafeImage } from "@/components/ui/safe-image";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/shared/reveal";
 import { getPortfolioProjects } from "@/lib/data/queries";
@@ -38,7 +38,7 @@ export default async function PortfolioPage() {
               <RevealItem key={project.id}>
                 <Link href={`/portfolio/${project.slug}`} className="group block">
                   <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-ink-100">
-                    <Image
+                    <SafeImage
                       src={project.featured_image}
                       alt={project.title}
                       fill

@@ -17,7 +17,23 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "images.unsplash.com",
+        hostname: "*.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "*.cloudinary.com",
+      },
+      {
+        protocol: "https",
+        hostname: "*.imgur.com",
+      },
+      {
+        protocol: "https",
+        hostname: "i.imgur.com",
+      },
+      {
+        protocol: "https",
+        hostname: "*.googleusercontent.com",
       },
     ],
     formats: ["image/avif", "image/webp"],

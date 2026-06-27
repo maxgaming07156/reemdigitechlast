@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
+import { SafeImage } from "@/components/ui/safe-image";
 import { Clock } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/shared/reveal";
 import { getPublishedBlogPosts } from "@/lib/data/queries";
@@ -34,7 +34,7 @@ export default async function BlogPage() {
             <Link href={`/blog/${featured.slug}`} className="group grid lg:grid-cols-2 gap-8 items-center rounded-3xl border border-ink-100 dark:border-ink-700 overflow-hidden">
               <div className="relative aspect-[16/10] lg:aspect-auto lg:h-full bg-ink-100">
                 {featured.cover_image && (
-                  <Image src={featured.cover_image} alt={featured.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <SafeImage src={featured.cover_image} alt={featured.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
                 )}
               </div>
               <div className="p-8 lg:p-10">
@@ -62,7 +62,7 @@ export default async function BlogPage() {
               <Link href={`/blog/${post.slug}`} className="group block h-full">
                 <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-ink-100">
                   {post.cover_image && (
-                    <Image src={post.cover_image} alt={post.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <SafeImage src={post.cover_image} alt={post.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
                   )}
                 </div>
                 <span className="mt-4 block font-mono text-xs uppercase tracking-wide text-indigo-500">{post.category}</span>
