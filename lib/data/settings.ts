@@ -3,7 +3,7 @@ import type { SiteSettings } from "@/types/database";
 
 const FALLBACK_SETTINGS: SiteSettings = {
   id: 1,
-  contact_email: "hello@reemdigitech.com",
+  contact_email: "info@reemdigitech.com",
   contact_phone_display: "+971 50 508 2998",
   whatsapp_number: "971505082998",
   office_location: "All over the globe",

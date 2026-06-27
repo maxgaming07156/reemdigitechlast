@@ -166,7 +166,7 @@ export const services: Service[] = [
   },
   {
     slug: "graphic-design",
-    name: "Graphic Design",
+    name: "Graphics Designing",
     shortDescription: "Visual identity that looks as credible as the business behind it.",
     heroDescription:
       "From logo systems to full brand guidelines, packaging, and marketing collateral — we design visual identities that hold up across every touchpoint a customer encounters.",
@@ -214,8 +214,8 @@ export const services: Service[] = [
         answer: "Yes — we frequently refresh existing identities rather than starting from zero, keeping the elements that already work for you.",
       },
     ],
-    metaTitle: "Graphic Design Services | ReemDigiTech",
-    metaDescription: "Brand identity and graphic design services — logo systems, brand guidelines, packaging, and marketing collateral.",
+    metaTitle: "Graphics Designing Services | ReemDigiTech",
+    metaDescription: "Brand identity and graphics designing services — logo systems, brand guidelines, packaging, and marketing collateral.",
   },
   {
     slug: "video-editing",
@@ -275,7 +275,7 @@ export const services: Service[] = [
     name: "Web Development",
     shortDescription: "Fast, custom-built websites — not templates wearing your logo.",
     heroDescription:
-      "We design and build custom websites focused on speed, clarity, and conversion. No bloated page builders — clean code that loads fast and scales as your business grows. This covers full website design and standalone landing pages as connected parts of one build process.",
+      "We design and build custom websites focused on speed, clarity, and conversion. No bloated page builders — clean code that loads fast and scales as your business grows. This covers full website design as the core build, with campaign landing pages included as part of every website project — and standalone Shopify landing pages available separately for e-commerce stores.",
     icon: "Code2",
     subServiceSlugs: ["website-design", "landing-pages"],
     benefits: [
@@ -413,9 +413,9 @@ export const subServices: SubService[] = [
     slug: "google-ads",
     parentSlug: "digital-marketing",
     name: "Google Ads",
-    shortDescription: "Search and display campaigns built to capture people actively looking for what you offer.",
+    shortDescription: "Search and display campaigns built to capture people actively looking for what you offer — with Google Business Profile management included.",
     heroDescription:
-      "We plan, build, and manage Google Ads campaigns — search, display, and shopping — targeting people with real intent, with budgets monitored weekly and reported on in plain language, not jargon.",
+      "We plan, build, and manage Google Ads campaigns — search, display, and shopping — targeting people with real intent, with budgets monitored weekly and reported on in plain language, not jargon. Basic Google Business Profile setup and management is included with every Google Ads engagement, since the two work together for local visibility.",
     icon: "Search",
     benefits: [
       {
@@ -431,12 +431,16 @@ export const subServices: SubService[] = [
         description: "Spend monitored weekly so budget moves toward what's working and away from what isn't.",
       },
       {
+        title: "Basic Google Business Profile included",
+        description: "Basic setup and management of your Google Business Profile is included, since paid and local search work better together.",
+      },
+      {
         title: "Clear monthly reporting",
         description: "Reporting tied to cost-per-lead and return, in language a non-marketer can follow.",
       },
     ],
     metaTitle: "Google Ads Management | ReemDigiTech",
-    metaDescription: "Google Ads campaign strategy and management — search, display, and shopping campaigns built around measurable conversions.",
+    metaDescription: "Google Ads campaign strategy and management — search, display, and shopping campaigns built around measurable conversions, with basic Google Business Profile management included.",
   },
   {
     slug: "meta-ads",
@@ -489,41 +493,45 @@ export const subServices: SubService[] = [
         description: "Designed for how most visitors will actually arrive — on a phone — first, then scaled up.",
       },
       {
+        title: "Campaign landing pages included",
+        description: "Need a focused page for a launch or promotion? Landing pages are included as part of your website build, not billed as a separate service.",
+      },
+      {
         title: "Easy to maintain",
         description: "Built with a content management approach so your team can update text and images without a developer.",
       },
     ],
     metaTitle: "Website Design Services | ReemDigiTech",
-    metaDescription: "Custom website design built around your brand and conversion goals — mobile-first, fast, and easy to maintain.",
+    metaDescription: "Custom website design built around your brand and conversion goals — mobile-first, fast, and easy to maintain, with campaign landing pages included.",
   },
   {
     slug: "landing-pages",
     parentSlug: "web-development",
-    name: "Landing Pages",
-    shortDescription: "Focused, fast-loading landing pages built for a single campaign goal.",
+    name: "Shopify Landing Pages",
+    shortDescription: "Focused, fast-loading Shopify landing pages built for e-commerce stores.",
     heroDescription:
-      "We design and build standalone landing pages for specific campaigns, launches, or offers — stripped of distractions, fast to load, and structured around a single clear conversion goal.",
+      "We design and build standalone Shopify landing pages for e-commerce stores — for product launches, promotions, or campaigns — stripped of distractions, fast to load, and structured around a single clear conversion goal. (Note: landing pages built as part of a full website project are already included in our Website Design service — this is specifically for dedicated Shopify e-commerce stores.)",
     icon: "MousePointerClick",
     benefits: [
+      {
+        title: "Built for e-commerce",
+        description: "Designed specifically for Shopify stores, with product- and offer-led layouts that fit how shoppers actually buy.",
+      },
       {
         title: "Built for one goal",
         description: "No competing navigation or distractions — every element on the page supports a single conversion action.",
       },
       {
         title: "Fast to launch",
-        description: "A focused scope means landing pages typically launch faster than a full website build.",
-      },
-      {
-        title: "Built to test",
-        description: "Structured so messaging and layout can be tested and refined based on real campaign performance.",
+        description: "A focused scope means Shopify landing pages typically launch faster than a full store build.",
       },
       {
         title: "Tracking-ready",
         description: "Set up with conversion tracking from day one, so you know exactly how the page is performing.",
       },
     ],
-    metaTitle: "Landing Page Design | ReemDigiTech",
-    metaDescription: "Fast, focused landing pages built for a single campaign goal, with conversion tracking set up from day one.",
+    metaTitle: "Shopify Landing Page Design | ReemDigiTech",
+    metaDescription: "Fast, focused Shopify landing pages built for e-commerce stores, with conversion tracking set up from day one.",
   },
 ];
 

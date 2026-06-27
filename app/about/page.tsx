@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Target, Eye, Heart, Lightbulb, ShieldCheck, Rocket } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/shared/reveal";
 
@@ -25,11 +26,11 @@ const TIMELINE = [
 ];
 
 const TEAM = [
-  { name: "Rameen Tanzeel ur Reman", title: "Founder", initials: "RT" },
-  { name: "Muhammad Qasim", title: "Head of Creative", initials: "MQ" },
-  { name: "Hassan Tariq", title: "Head of Digital Marketing", initials: "HT" },
-  { name: "Emily Carter", title: "Lead Web Developer", initials: "EC" },
-  { name: "Sara Khan", title: "Head of Content & Video", initials: "SK" },
+  { name: "Tanzeel ul Rehman", title: "Founder", initials: "TR", image: "/team/tanzeel-ur-rehman.jpg" },
+  { name: "Muhammad Qasim", title: "Head of Creative", initials: "MQ", image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400&h=400&fit=crop&crop=faces" },
+  { name: "Hassan Tariq", title: "Head of Digital Marketing", initials: "HT", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=faces" },
+  { name: "Emily Carter", title: "Lead Web Developer", initials: "EC", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=faces" },
+  { name: "Sara Khan", title: "Head of Content & Video", initials: "SK", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=faces" },
 ];
 
 export default function AboutPage() {
@@ -119,8 +120,14 @@ export default function AboutPage() {
           {TEAM.map((member) => (
             <RevealItem key={member.name}>
               <div className="text-center">
-                <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-indigo-100 dark:bg-indigo-500/20 font-display text-xl font-semibold text-indigo-600 dark:text-indigo-300">
-                  {member.initials}
+                <div className="mx-auto relative h-20 w-20 overflow-hidden rounded-full bg-indigo-100 dark:bg-indigo-500/20">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    sizes="80px"
+                    className="object-cover"
+                  />
                 </div>
                 <h3 className="mt-4 font-display font-semibold text-ink-900 dark:text-white">{member.name}</h3>
                 <p className="text-sm text-ink-400">{member.title}</p>
