@@ -28,8 +28,8 @@ const TIMELINE = [
 const TEAM = [
   { name: "Tanzeel ul Rehman", title: "Founder", initials: "TR", image: "/team/tanzeel-ur-rehman.jpg" },
   { name: "Muhammad Qasim", title: "Head of Creative", initials: "MQ", image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400&h=400&fit=crop&crop=faces" },
-  { name: "Hassan Tariq", title: "Head of Digital Marketing", initials: "HT", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=faces" },
-  { name: "Emily Carter", title: "Lead Web Developer", initials: "EC", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=faces" },
+  { name: "Shahroz", title: "Head of Digital Marketing", initials: "S", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=faces" },
+  { name: "Muhammad Qasim", title: "Lead Web Developer", initials: "MQ", image: "https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400&h=400&fit=crop&crop=faces" },
   { name: "Sara Khan", title: "Head of Content & Video", initials: "SK", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=faces" },
 ];
 
