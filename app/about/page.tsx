@@ -25,7 +25,8 @@ const TIMELINE = [
 ];
 
 const TEAM = [
-  { name: "Reem Al Mansoori", title: "Founder & Creative Director", initials: "RM" },
+  { name: "Rameen Tanzeel ur Reman", title: "Founder", initials: "RT" },
+  { name: "Muhammad Qasim", title: "Co-Founder & Head of Creative", initials: "MQ" },
   { name: "Hassan Tariq", title: "Head of Digital Marketing", initials: "HT" },
   { name: "Emily Carter", title: "Lead Web Developer", initials: "EC" },
   { name: "Sara Khan", title: "Head of Content & Video", initials: "SK" },

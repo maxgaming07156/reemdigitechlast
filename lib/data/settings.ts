@@ -6,7 +6,7 @@ const FALLBACK_SETTINGS: SiteSettings = {
   contact_email: "hello@reemdigitech.com",
   contact_phone_display: "+971 50 508 2998",
   whatsapp_number: "971505082998",
-  office_location: "UK · UAE · Denmark · Pakistan · Remote-first worldwide",
+  office_location: "All over the globe",
   linkedin_url: null,
   instagram_url: null,
   facebook_url: null,

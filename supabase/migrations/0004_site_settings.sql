@@ -9,7 +9,7 @@ create table public.site_settings (
   contact_email text not null default 'hello@reemdigitech.com',
   contact_phone_display text not null default '+971 50 508 2998',
   whatsapp_number text not null default '971505082998',
-  office_location text not null default 'UK · UAE · Denmark · Pakistan · Remote-first worldwide',
+  office_location text not null default 'All over the globe',
   linkedin_url text,
   instagram_url text,
   facebook_url text,

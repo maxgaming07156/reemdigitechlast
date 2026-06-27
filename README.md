@@ -81,4 +81,3 @@ types/database.ts        Hand-maintained types mirroring the Supabase schema
 Blog covers and portfolio images use URL fields (paste a link from Unsplash, your CDN, or Supabase Storage's public URL) rather than direct file upload — this was a deliberate scope decision to ship faster. The seeded data uses hosted Unsplash URLs as realistic placeholders; swap these for real client photography by editing the project/post in the admin panel and pasting a new image URL, or by updating the `featured_image` / `gallery_images` / `cover_image` columns directly in Supabase.
 
 If file upload becomes a priority later, the natural next step is a Supabase Storage bucket (`portfolio-images`, `blog-images`) with a simple upload component that returns a public URL into the same fields — no schema changes required.
-# reemdigitechq
