@@ -29,8 +29,8 @@ const TEAM = [
   { name: "Tanzeel ul Rehman", title: "Founder", initials: "TR", image: "/team/tanzeel-ur-rehman-new.jpg" },
   { name: "Muhammad Qasim", title: "Head of Creative", initials: "MQ", image: "/team/muhammad-qasim.png" },
   { name: "Shahroz", title: "Head of Digital Marketing", initials: "S", image: "/team/anonymous.svg" },
-  { name: "Muhammad Qasim", title: "Lead Web Developer", initials: "MQ", image: "/team/muhammad-qasim.png" },
-  { name: "Osama Majid", title: "Head of Content & Video", initials: "OM", image: "/team/anonymous.svg" },
+  { name: "Muhammad Qasim", title: "Lead Web Developer", initials: "MQ", image: "/team/anonymous.svg" },
+  { name: "Osama Majid", title: "Head of Content & Video", initials: "OM", image: "/team/osama-majid-new.jpg" },
 ];
 
 export default function AboutPage() {
