@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const VALUES = [
   { icon: ShieldCheck, title: "Honesty over hype", description: "We tell clients what's realistic before they spend a dollar, not after." },
   { icon: Lightbulb, title: "Curiosity by default", description: "We stay close to what's actually changing in marketing and technology, not what was true two years ago." },
-  { icon: Heart, title: "Craft matters", description: "Every deliverable gets the same care whether it's a $500 graphic or a $50,000 campaign." },
+  { icon: Heart, title: "Craft matters", description: "Every deliverable gets the same care whether it's a $150 graphic or a $15,000 campaign." },
   { icon: Rocket, title: "Results over activity", description: "Busy work isn't the goal. Measurable growth is." },
 ];
 
@@ -30,7 +30,7 @@ const TEAM = [
   { name: "Muhammad Qasim", title: "Head of Creative", initials: "MQ", image: "/team/muhammad-qasim.png" },
   { name: "Shahroz", title: "Head of Digital Marketing", initials: "S", image: "/team/anonymous.svg" },
   { name: "Muhammad Qasim", title: "Lead Web Developer", initials: "MQ", image: "/team/anonymous.svg" },
-  { name: "Osama Majid", title: "Head of Content & Video", initials: "OM", image: "/team/osama-majid-new.jpg" },
+  { name: "Zuria Nawaz", title: "Head of Content & Video", initials: "ZN", image: "/team/zuria-nawaz.png" },
 ];
 
 export default function AboutPage() {
@@ -71,6 +71,25 @@ export default function AboutPage() {
 
       <section className="container-px container mt-24">
         <Reveal>
+          <span className="eyebrow">Our Journey</span>
+          <h2 className="font-display text-3xl sm:text-4xl font-semibold tracking-tight mt-4 text-ink-900 dark:text-white">Timeline</h2>
+        </Reveal>
+        <div className="mt-10 relative pl-8 border-l border-ink-200 dark:border-ink-700 space-y-10">
+          {TIMELINE.map((item) => (
+            <Reveal key={item.year} direction="right">
+              <div className="relative">
+                <span className="absolute -left-[2.45rem] top-1 flex h-4 w-4 rounded-full bg-indigo-500 ring-4 ring-white dark:ring-ink-900" />
+                <span className="font-mono text-sm text-indigo-500">{item.year}</span>
+                <h3 className="mt-1 font-display text-lg font-semibold text-ink-900 dark:text-white">{item.title}</h3>
+                <p className="mt-1 text-sm text-ink-500 dark:text-ink-300 leading-relaxed max-w-lg">{item.description}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <section className="container-px container mt-24">
+        <Reveal>
           <span className="eyebrow">What We Stand For</span>
           <h2 className="font-display text-3xl sm:text-4xl font-semibold tracking-tight mt-4 text-ink-900 dark:text-white">Our Values</h2>
         </Reveal>
@@ -88,25 +107,6 @@ export default function AboutPage() {
             );
           })}
         </RevealGroup>
-      </section>
-
-      <section className="container-px container mt-24">
-        <Reveal>
-          <span className="eyebrow">Our Journey</span>
-          <h2 className="font-display text-3xl sm:text-4xl font-semibold tracking-tight mt-4 text-ink-900 dark:text-white">Timeline</h2>
-        </Reveal>
-        <div className="mt-10 relative pl-8 border-l border-ink-200 dark:border-ink-700 space-y-10">
-          {TIMELINE.map((item) => (
-            <Reveal key={item.year} direction="right">
-              <div className="relative">
-                <span className="absolute -left-[2.45rem] top-1 flex h-4 w-4 rounded-full bg-indigo-500 ring-4 ring-white dark:ring-ink-900" />
-                <span className="font-mono text-sm text-indigo-500">{item.year}</span>
-                <h3 className="mt-1 font-display text-lg font-semibold text-ink-900 dark:text-white">{item.title}</h3>
-                <p className="mt-1 text-sm text-ink-500 dark:text-ink-300 leading-relaxed max-w-lg">{item.description}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
       </section>
 
       <section className="container-px container mt-24">
