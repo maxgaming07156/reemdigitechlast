@@ -29,7 +29,7 @@ const TEAM = [
   { name: "Tanzeel ul Rehman", title: "Founder", initials: "TR", image: "/team/tanzeel-ur-rehman-new.jpg" },
   { name: "Muhammad Qasim", title: "Head of Creative", initials: "MQ", image: "/team/muhammad-qasim.png" },
   { name: "Shahroz", title: "Head of Digital Marketing", initials: "S", image: "/team/anonymous.svg" },
-  { name: "Muhammad Qasim", title: "Lead Web Developer", initials: "MQ", image: "/team/anonymous.svg" },
+  { name: "Ahsan Zafar", title: "Lead Web Developer", initials: "AZ", image: "/team/ahsan-zafar.jpg" },
   { name: "Zuria Nawaz", title: "Head of Content & Video", initials: "ZN", image: "/team/zuria-nawaz.png" },
 ];
 
@@ -48,67 +48,7 @@ export default function AboutPage() {
         </Reveal>
       </section>
 
-      <section className="container-px container mt-24 grid sm:grid-cols-2 gap-6">
-        <Reveal>
-          <div className="rounded-3xl border border-ink-100 dark:border-ink-700 p-8 h-full">
-            <Target className="h-7 w-7 text-indigo-500" />
-            <h2 className="mt-5 font-display text-2xl font-semibold text-ink-900 dark:text-white">Our Mission</h2>
-            <p className="mt-3 text-ink-500 dark:text-ink-300 leading-relaxed">
-              To give businesses of every size access to the same caliber of strategy, design, and execution that large brands take for granted — without the bloated retainer or the jargon.
-            </p>
-          </div>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <div className="rounded-3xl border border-ink-100 dark:border-ink-700 p-8 h-full">
-            <Eye className="h-7 w-7 text-indigo-500" />
-            <h2 className="mt-5 font-display text-2xl font-semibold text-ink-900 dark:text-white">Our Vision</h2>
-            <p className="mt-3 text-ink-500 dark:text-ink-300 leading-relaxed">
-              A digital agency model where clients stay not because of a contract, but because the work consistently earns it — across every market we operate in.
-            </p>
-          </div>
-        </Reveal>
-      </section>
-
-      <section className="container-px container mt-24">
-        <Reveal>
-          <span className="eyebrow">Our Journey</span>
-          <h2 className="font-display text-3xl sm:text-4xl font-semibold tracking-tight mt-4 text-ink-900 dark:text-white">Timeline</h2>
-        </Reveal>
-        <div className="mt-10 relative pl-8 border-l border-ink-200 dark:border-ink-700 space-y-10">
-          {TIMELINE.map((item) => (
-            <Reveal key={item.year} direction="right">
-              <div className="relative">
-                <span className="absolute -left-[2.45rem] top-1 flex h-4 w-4 rounded-full bg-indigo-500 ring-4 ring-white dark:ring-ink-900" />
-                <span className="font-mono text-sm text-indigo-500">{item.year}</span>
-                <h3 className="mt-1 font-display text-lg font-semibold text-ink-900 dark:text-white">{item.title}</h3>
-                <p className="mt-1 text-sm text-ink-500 dark:text-ink-300 leading-relaxed max-w-lg">{item.description}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      <section className="container-px container mt-24">
-        <Reveal>
-          <span className="eyebrow">What We Stand For</span>
-          <h2 className="font-display text-3xl sm:text-4xl font-semibold tracking-tight mt-4 text-ink-900 dark:text-white">Our Values</h2>
-        </Reveal>
-        <RevealGroup className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {VALUES.map((v) => {
-            const Icon = v.icon;
-            return (
-              <RevealItem key={v.title}>
-                <div className="rounded-2xl bg-ink-50 dark:bg-ink-800 p-6 h-full">
-                  <Icon className="h-6 w-6 text-indigo-500" />
-                  <h3 className="mt-4 font-display font-semibold text-ink-900 dark:text-white">{v.title}</h3>
-                  <p className="mt-2 text-sm text-ink-500 dark:text-ink-300 leading-relaxed">{v.description}</p>
-                </div>
-              </RevealItem>
-            );
-          })}
-        </RevealGroup>
-      </section>
-
+      {/* ── Meet the Team ── */}
       <section className="container-px container mt-24">
         <Reveal>
           <span className="eyebrow">Meet the Team</span>
@@ -134,6 +74,70 @@ export default function AboutPage() {
               </div>
             </RevealItem>
           ))}
+        </RevealGroup>
+      </section>
+
+      {/* ── Timeline ── */}
+      <section className="container-px container mt-24">
+        <Reveal>
+          <span className="eyebrow">Our Journey</span>
+          <h2 className="font-display text-3xl sm:text-4xl font-semibold tracking-tight mt-4 text-ink-900 dark:text-white">Timeline</h2>
+        </Reveal>
+        <div className="mt-10 relative pl-8 border-l border-ink-200 dark:border-ink-700 space-y-10">
+          {TIMELINE.map((item) => (
+            <Reveal key={item.year} direction="right">
+              <div className="relative">
+                <span className="absolute -left-[2.45rem] top-1 flex h-4 w-4 rounded-full bg-indigo-500 ring-4 ring-white dark:ring-ink-900" />
+                <span className="font-mono text-sm text-indigo-500">{item.year}</span>
+                <h3 className="mt-1 font-display text-lg font-semibold text-ink-900 dark:text-white">{item.title}</h3>
+                <p className="mt-1 text-sm text-ink-500 dark:text-ink-300 leading-relaxed max-w-lg">{item.description}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Mission & Vision ── */}
+      <section className="container-px container mt-24 grid sm:grid-cols-2 gap-6">
+        <Reveal>
+          <div className="rounded-3xl border border-ink-100 dark:border-ink-700 p-8 h-full">
+            <Target className="h-7 w-7 text-indigo-500" />
+            <h2 className="mt-5 font-display text-2xl font-semibold text-ink-900 dark:text-white">Our Mission</h2>
+            <p className="mt-3 text-ink-500 dark:text-ink-300 leading-relaxed">
+              To give businesses of every size access to the same caliber of strategy, design, and execution that large brands take for granted — without the bloated retainer or the jargon.
+            </p>
+          </div>
+        </Reveal>
+        <Reveal delay={0.1}>
+          <div className="rounded-3xl border border-ink-100 dark:border-ink-700 p-8 h-full">
+            <Eye className="h-7 w-7 text-indigo-500" />
+            <h2 className="mt-5 font-display text-2xl font-semibold text-ink-900 dark:text-white">Our Vision</h2>
+            <p className="mt-3 text-ink-500 dark:text-ink-300 leading-relaxed">
+              A digital agency model where clients stay not because of a contract, but because the work consistently earns it — across every market we operate in.
+            </p>
+          </div>
+        </Reveal>
+      </section>
+
+      {/* ── Values ── */}
+      <section className="container-px container mt-24">
+        <Reveal>
+          <span className="eyebrow">What We Stand For</span>
+          <h2 className="font-display text-3xl sm:text-4xl font-semibold tracking-tight mt-4 text-ink-900 dark:text-white">Our Values</h2>
+        </Reveal>
+        <RevealGroup className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {VALUES.map((v) => {
+            const Icon = v.icon;
+            return (
+              <RevealItem key={v.title}>
+                <div className="rounded-2xl bg-ink-50 dark:bg-ink-800 p-6 h-full">
+                  <Icon className="h-6 w-6 text-indigo-500" />
+                  <h3 className="mt-4 font-display font-semibold text-ink-900 dark:text-white">{v.title}</h3>
+                  <p className="mt-2 text-sm text-ink-500 dark:text-ink-300 leading-relaxed">{v.description}</p>
+                </div>
+              </RevealItem>
+            );
+          })}
         </RevealGroup>
       </section>
     </div>
