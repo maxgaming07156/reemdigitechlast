@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
       const err = await geminiRes.text();
       console.error("Gemini API error:", err);
       return NextResponse.json(
-        { error: "AI service error." },
+        { error: "AI service error.", details: err },
         { status: 502 }
       );
     }
@@ -61,10 +61,10 @@ export async function POST(req: NextRequest) {
       "I'm sorry, I couldn't generate a response. Please contact us directly at info@reemdigitech.com.";
 
     return NextResponse.json({ reply });
-  } catch (error) {
+  } catch (error: any) {
     console.error("Chat API error:", error);
     return NextResponse.json(
-      { error: "Internal server error." },
+      { error: "Internal server error.", details: error.message },
       { status: 500 }
     );
   }

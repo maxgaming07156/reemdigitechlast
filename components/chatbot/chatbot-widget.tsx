@@ -65,7 +65,11 @@ export function ChatbotWidget() {
         body: JSON.stringify({ messages: conversationHistory }),
       });
 
-      if (!res.ok) throw new Error("Failed to get response");
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        console.error("API error response:", errData);
+        throw new Error("Failed to get response");
+      }
 
       const data = await res.json();
 

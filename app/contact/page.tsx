@@ -55,8 +55,8 @@ export default async function ContactPage() {
             <div className="rounded-2xl border border-ink-100 dark:border-ink-700 p-6 flex items-start gap-4">
               <MapPin className="h-5 w-5 text-indigo-500 mt-0.5" />
               <div>
-                <p className="text-xs font-mono uppercase tracking-wide text-ink-400">Global Reach</p>
-                <p className="text-sm font-medium text-ink-900 dark:text-white mt-1">{settings.office_location}</p>
+                <p className="text-xs font-mono uppercase tracking-wide text-ink-400">Global Delivery</p>
+                <p className="text-sm font-medium text-ink-900 dark:text-white mt-1">Providing reliable, high-quality digital services to organizations worldwide.</p>
               </div>
             </div>
           </div>
