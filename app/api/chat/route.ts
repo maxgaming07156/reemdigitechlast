@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { CHATBOT_SYSTEM_PROMPT } from "@/components/chatbot/chatbot-context";
+import { submitContactForm } from "@/lib/actions";
 import type { ChatApiRequest } from "@/types/chatbot";
 
 export async function POST(req: NextRequest) {
@@ -38,6 +39,26 @@ export async function POST(req: NextRequest) {
             parts: [{ text: CHATBOT_SYSTEM_PROMPT }],
           },
           contents,
+          tools: [
+            {
+              functionDeclarations: [
+                {
+                  name: "submit_lead",
+                  description: "Submits a new lead/contact form. Call this only after you have collected the user's name, email, and message/requirements.",
+                  parameters: {
+                    type: "OBJECT",
+                    properties: {
+                      name: { type: "STRING", description: "Full name" },
+                      email: { type: "STRING", description: "Email address" },
+                      service_interested_in: { type: "STRING", description: "Service they are interested in" },
+                      message: { type: "STRING", description: "Their project details or requirements" },
+                    },
+                    required: ["name", "email", "message"],
+                  },
+                },
+              ],
+            },
+          ],
           generationConfig: {
             temperature: 0.7,
             maxOutputTokens: 512,
@@ -65,8 +86,23 @@ export async function POST(req: NextRequest) {
     }
 
     const data = await geminiRes.json();
+    const parts = data?.candidates?.[0]?.content?.parts;
+
+    // Intercept function calls
+    if (parts?.[0]?.functionCall) {
+      const call = parts[0].functionCall;
+      if (call.name === "submit_lead") {
+        const result = await submitContactForm(call.args);
+        return NextResponse.json({
+          reply: result.success
+            ? "Thank you! I have successfully submitted your details to our team. We'll be in touch very soon."
+            : "Sorry, I had trouble submitting your details automatically. Please use our contact form page instead.",
+        });
+      }
+    }
+
     const reply =
-      data?.candidates?.[0]?.content?.parts?.[0]?.text ??
+      parts?.[0]?.text ??
       "I'm sorry, I couldn't generate a response. Please contact us directly at info@reemdigitech.com.";
 
     return NextResponse.json({ reply });
