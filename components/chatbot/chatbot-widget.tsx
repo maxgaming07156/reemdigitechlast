@@ -66,8 +66,6 @@ export function ChatbotWidget() {
       });
 
       if (!res.ok) {
-        const errData = await res.json().catch(() => ({}));
-        console.error("API error response:", errData);
         throw new Error("Failed to get response");
       }
 
@@ -80,12 +78,11 @@ export function ChatbotWidget() {
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
-    } catch {
+    } catch (err: any) {
       const errorMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: "assistant",
-        content:
-          "Sorry, I'm having trouble connecting right now. Please reach us directly at info@reemdigitech.com or on WhatsApp.",
+        content: "Sorry, I'm having trouble connecting right now. Please reach us directly at info@reemdigitech.com or on WhatsApp.",
       };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {

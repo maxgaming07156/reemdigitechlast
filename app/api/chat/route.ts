@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
     }));
 
     const geminiRes = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${apiKey}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -47,10 +47,19 @@ export async function POST(req: NextRequest) {
     );
 
     if (!geminiRes.ok) {
-      const err = await geminiRes.text();
-      console.error("Gemini API error:", err);
+      const errText = await geminiRes.text();
+      let availableModels = "Could not fetch models";
+      try {
+        const modelsRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`);
+        if (modelsRes.ok) {
+          const modelsData = await modelsRes.json();
+          availableModels = modelsData.models.map((m: any) => m.name).join(", ");
+        }
+      } catch (e) {}
+
+      console.error("Gemini API error:", errText);
       return NextResponse.json(
-        { error: "AI service error.", details: err },
+        { error: "AI service error.", details: errText, availableModels },
         { status: 502 }
       );
     }
