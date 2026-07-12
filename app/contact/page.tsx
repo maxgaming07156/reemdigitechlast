@@ -41,7 +41,8 @@ export default async function ContactPage() {
               <Mail className="h-5 w-5 text-indigo-500 mt-0.5" />
               <div>
                 <p className="text-xs font-mono uppercase tracking-wide text-ink-400">Email</p>
-                <p className="text-sm font-medium text-ink-900 dark:text-white mt-1">{settings.contact_email}</p>
+                <p className="text-sm font-medium text-ink-900 dark:text-white mt-1">info@reemdigitech.com</p>
+                <p className="text-sm font-medium text-ink-900 dark:text-white mt-1">reemdigitech@gmail.com</p>
               </div>
             </div>
             <div className="rounded-2xl border border-ink-100 dark:border-ink-700 p-6 flex items-start gap-4">
@@ -54,7 +55,7 @@ export default async function ContactPage() {
             <div className="rounded-2xl border border-ink-100 dark:border-ink-700 p-6 flex items-start gap-4">
               <MapPin className="h-5 w-5 text-indigo-500 mt-0.5" />
               <div>
-                <p className="text-xs font-mono uppercase tracking-wide text-ink-400">Serving</p>
+                <p className="text-xs font-mono uppercase tracking-wide text-ink-400">Global Reach</p>
                 <p className="text-sm font-medium text-ink-900 dark:text-white mt-1">{settings.office_location}</p>
               </div>
             </div>

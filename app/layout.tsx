@@ -3,6 +3,7 @@ import { Inter, Inter_Tight, JetBrains_Mono } from "next/font/google";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { WhatsAppButton } from "@/components/shared/whatsapp-button";
+import { ChatbotWidget } from "@/components/chatbot/chatbot-widget";
 import { Toaster } from "sonner";
 import { getSiteSettings } from "@/lib/data/settings";
 import "./globals.css";
@@ -87,6 +88,7 @@ export default async function RootLayout({
         <main>{children}</main>
         <SiteFooter settings={settings} />
         <WhatsAppButton whatsappNumber={settings.whatsapp_number} />
+        <ChatbotWidget />
         <Toaster position="bottom-right" richColors />
       </body>
     </html>

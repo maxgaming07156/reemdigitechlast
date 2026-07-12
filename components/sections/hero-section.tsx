@@ -69,7 +69,7 @@ export function HeroSection() {
             { value: "120+", label: "Projects Delivered" },
             { value: "4", label: "Countries Served" },
             { value: "98%", label: "Client Retention" },
-            { value: "5★", label: "Average Rating" },
+            { value: "4.4★", label: "Average Rating" },
           ].map((stat) => (
             <div key={stat.label}>
               <p className="font-display text-2xl sm:text-3xl font-semibold text-white">{stat.value}</p>
