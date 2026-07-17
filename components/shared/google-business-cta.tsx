@@ -1,4 +1,4 @@
-import { ExternalLink, Star } from "lucide-react";
+import { ExternalLink, Star, StarHalf } from "lucide-react";
 
 const GOOGLE_BUSINESS_URL = "https://www.google.com/maps/place/ReemDigiTech/@46.423669,-57.9397877,3z/data=!3m1!4b1!4m6!3m5!1s0x4ac6e281c07bb96f:0xf725c6624a74ce05!8m2!3d46.423669!4d-57.9397877!16s%2Fg%2F11zgt4_zk7!5m1!1e1?hl=en-GB&entry=ttu&g_ep=EgoyMDI2MDcxNC4wIKXMDSoASAFQAw%3D%3D";
 
@@ -20,10 +20,11 @@ export function GoogleBusinessCta() {
             View our verified Google Business Profile, read customer reviews, and get the latest business updates.
           </p>
           <div className="flex items-center gap-1 mt-3">
-            {[...Array(5)].map((_, i) => (
+            {[...Array(4)].map((_, i) => (
               <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
             ))}
-            <span className="text-xs font-medium text-ink-600 dark:text-ink-300 ml-1">5.0</span>
+            <StarHalf className="w-4 h-4 fill-amber-400 text-amber-400" />
+            <span className="text-xs font-medium text-ink-600 dark:text-ink-300 ml-1">4.6</span>
           </div>
         </div>
         <div>
