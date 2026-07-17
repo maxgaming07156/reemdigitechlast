@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight, Calendar, Building2, TrendingUp } from "lucide-r
 import { Button } from "@/components/ui/button";
 import { Reveal, RevealGroup, RevealItem } from "@/components/shared/reveal";
 import { getPortfolioProjectBySlug, getPortfolioProjects } from "@/lib/data/queries";
+import { CreativeWorkSchema, BreadcrumbSchema } from "@/components/layout/schema";
 import { formatDate } from "@/lib/utils";
 
 export async function generateMetadata({
@@ -41,21 +42,14 @@ export default async function PortfolioDetailPage({
   const allProjects = await getPortfolioProjects();
   const otherProjects = allProjects.filter((p) => p.slug !== slug).slice(0, 3);
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    name: project.title,
-    description: project.description,
-    creator: { "@type": "Organization", name: "ReemDigiTech" },
-    dateCreated: project.completion_date,
-  };
-
   return (
     <div className="pb-24">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <CreativeWorkSchema project={project} />
+      <BreadcrumbSchema items={[
+        { name: "Home", url: "/" },
+        { name: "Portfolio", url: "/portfolio" },
+        { name: project.title, url: `/portfolio/${project.slug}` }
+      ]} />
 
       <section className="pt-32 container-px container">
         <Reveal>

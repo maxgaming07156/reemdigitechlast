@@ -32,6 +32,7 @@ import {
   getSubServiceBySlug,
   getSubServicesByParent,
 } from "@/lib/data/services";
+import { ServiceSchema, FAQSchema, BreadcrumbSchema } from "@/components/layout/schema";
 
 const ICONS = {
   PenTool,
@@ -98,23 +99,15 @@ function FullServiceView({ slug }: { slug: string }) {
     ? getSubServicesByParent(service.slug)
     : [];
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    serviceType: service.name,
-    provider: {
-      "@type": "Organization",
-      name: "ReemDigiTech",
-    },
-    description: service.heroDescription,
-  };
-
   return (
     <div className="pb-24">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <ServiceSchema service={service} />
+      {service.faqs && <FAQSchema faqs={service.faqs} />}
+      <BreadcrumbSchema items={[
+        { name: "Home", url: "/" },
+        { name: "Services", url: "/services" },
+        { name: service.name, url: `/services/${service.slug}` }
+      ]} />
 
       {/* Hero */}
       <section className="pt-32 pb-20 bg-ink-900 text-white">
@@ -296,23 +289,15 @@ function SubServiceView({ slug }: { slug: string }) {
   const Icon = ICONS[sub.icon as keyof typeof ICONS];
   const siblings = getSubServicesByParent(sub.parentSlug).filter((s) => s.slug !== sub.slug);
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    serviceType: sub.name,
-    provider: {
-      "@type": "Organization",
-      name: "ReemDigiTech",
-    },
-    description: sub.heroDescription,
-  };
-
   return (
     <div className="pb-24">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <ServiceSchema service={sub} />
+      <BreadcrumbSchema items={[
+        { name: "Home", url: "/" },
+        { name: "Services", url: "/services" },
+        ...(parent ? [{ name: parent.name, url: `/services/${parent.slug}` }] : []),
+        { name: sub.name, url: `/services/${sub.slug}` }
+      ]} />
 
       {/* Hero */}
       <section className="pt-32 pb-20 bg-ink-900 text-white">

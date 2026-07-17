@@ -6,6 +6,7 @@ import { ArrowLeft, Clock, Calendar } from "lucide-react";
 import { Reveal, RevealGroup, RevealItem } from "@/components/shared/reveal";
 import { NewsletterForm } from "@/components/shared/newsletter-form";
 import { getBlogPostBySlug, getRelatedBlogPosts, getPublishedBlogPostsForBuild } from "@/lib/data/queries";
+import { BlogPostingSchema, BreadcrumbSchema } from "@/components/layout/schema";
 import { renderMarkdown } from "@/lib/markdown";
 import { formatDate } from "@/lib/utils";
 
@@ -48,22 +49,14 @@ export default async function BlogDetailPage({
 
   const related = await getRelatedBlogPosts(post.category, post.slug, 3);
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
-    description: post.excerpt,
-    datePublished: post.published_at,
-    dateModified: post.updated_at,
-    author: { "@type": "Organization", name: "ReemDigiTech" },
-  };
-
   return (
     <div className="pb-24">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <BlogPostingSchema post={post} />
+      <BreadcrumbSchema items={[
+        { name: "Home", url: "/" },
+        { name: "Blog", url: "/blog" },
+        { name: post.title, url: `/blog/${post.slug}` }
+      ]} />
 
       <article className="pt-32 container-px container max-w-3xl">
         <Reveal>

@@ -8,6 +8,8 @@ import { NewsletterForm } from "@/components/shared/newsletter-form";
 import { services } from "@/lib/data/services";
 import type { SiteSettings } from "@/types/database";
 
+import { GoogleBusinessCta } from "@/components/shared/google-business-cta";
+
 const COMPANY_LINKS = [
   { label: "About Us", href: "/about" },
   { label: "Portfolio", href: "/portfolio" },
@@ -35,6 +37,9 @@ export function SiteFooter({ settings }: { settings: SiteSettings }) {
   return (
     <footer className="bg-ink-900 text-ink-200 border-t border-ink-800">
       <div className="container-px container py-16 lg:py-20">
+        <div className="mb-16">
+          <GoogleBusinessCta />
+        </div>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-4">
             <Link href="/" className="flex items-center gap-2 font-display font-semibold text-lg text-white">

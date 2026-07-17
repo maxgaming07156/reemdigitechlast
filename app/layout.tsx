@@ -72,6 +72,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { OrganizationSchema, LocalBusinessSchema, WebSiteSchema } from "@/components/layout/schema";
+
 export default async function RootLayout({
   children,
 }: {
@@ -84,6 +86,9 @@ export default async function RootLayout({
       <body
         className={`${interTight.variable} ${inter.variable} ${jetbrainsMono.variable} font-body`}
       >
+        <OrganizationSchema settings={settings} />
+        <LocalBusinessSchema settings={settings} />
+        <WebSiteSchema />
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter settings={settings} />

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { Reveal } from "@/components/shared/reveal";
 import { ContactForm } from "@/components/shared/contact-form";
+import { GoogleBusinessCta } from "@/components/shared/google-business-cta";
 import { getSiteSettings } from "@/lib/data/settings";
 
 export const metadata: Metadata = {
@@ -58,6 +59,9 @@ export default async function ContactPage() {
                 <p className="text-xs font-mono uppercase tracking-wide text-ink-400">Global Delivery</p>
                 <p className="text-sm font-medium text-ink-900 dark:text-white mt-1">Providing reliable, high-quality digital services to organizations worldwide.</p>
               </div>
+            </div>
+            <div className="mt-6">
+              <GoogleBusinessCta />
             </div>
           </div>
         </Reveal>
