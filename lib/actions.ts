@@ -1,6 +1,6 @@
 "use server";
 
-import { createClient } from "@/lib/supabase/server";
+import { createServiceRoleClient } from "@/lib/supabase/server";
 import { sendLeadNotification, sendBookingNotification } from "@/lib/email";
 import {
   contactFormSchema,
@@ -19,7 +19,7 @@ export async function submitContactForm(formData: unknown): Promise<ActionResult
     return { success: false, message: parsed.error.issues[0]?.message ?? "Please check the form and try again." };
   }
 
-  const supabase = await createClient();
+  const supabase = createServiceRoleClient();
   const { error } = await supabase.from("leads").insert({
     name: parsed.data.name,
     company: parsed.data.company || null,
@@ -54,7 +54,7 @@ export async function subscribeToNewsletter(formData: unknown): Promise<ActionRe
     return { success: false, message: parsed.error.issues[0]?.message ?? "Please enter a valid email." };
   }
 
-  const supabase = await createClient();
+  const supabase = createServiceRoleClient();
   const { error } = await supabase
     .from("subscribers")
     .upsert({ email: parsed.data.email, is_active: true }, { onConflict: "email" });
@@ -73,7 +73,7 @@ export async function submitBookingForm(formData: unknown): Promise<ActionResult
     return { success: false, message: parsed.error.issues[0]?.message ?? "Please check the form and try again." };
   }
 
-  const supabase = await createClient();
+  const supabase = createServiceRoleClient();
   const { error } = await supabase.from("bookings").insert({
     name: parsed.data.name,
     email: parsed.data.email,
