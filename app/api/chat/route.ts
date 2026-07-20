@@ -5,7 +5,7 @@ import type { ChatApiRequest } from "@/types/chatbot";
 
 export async function POST(req: NextRequest) {
   try {
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = process.env.GROK_API_KEY;
     if (!apiKey) {
       return NextResponse.json(
         { error: "AI service not configured." },
@@ -23,76 +23,69 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Build the conversation history in Gemini's expected format
-    const contents = messages.map((msg) => ({
-      role: msg.role === "user" ? "user" : "model",
-      parts: [{ text: msg.content }],
-    }));
+    // Build the conversation history in Grok/OpenAI expected format
+    const formattedMessages = [
+      { role: "system", content: CHATBOT_SYSTEM_PROMPT },
+      ...messages.map((msg) => ({
+        role: msg.role === "user" ? "user" : "assistant",
+        content: msg.content,
+      }))
+    ];
 
-    const geminiRes = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${apiKey}`,
+    const grokRes = await fetch(
+      "https://api.x.ai/v1/chat/completions",
       {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${apiKey}`,
+        },
         body: JSON.stringify({
-          system_instruction: {
-            parts: [{ text: CHATBOT_SYSTEM_PROMPT }],
-          },
-          contents,
+          model: "grok-2-latest",
+          messages: formattedMessages,
           tools: [
             {
-              functionDeclarations: [
-                {
-                  name: "submit_lead",
-                  description: "Submits a new lead/contact form. Call this only after you have collected the user's name, email, and message/requirements.",
-                  parameters: {
-                    type: "OBJECT",
-                    properties: {
-                      name: { type: "STRING", description: "Full name" },
-                      email: { type: "STRING", description: "Email address" },
-                      service_interested_in: { type: "STRING", description: "Service they are interested in" },
-                      message: { type: "STRING", description: "Their project details or requirements" },
-                    },
-                    required: ["name", "email", "message"],
+              type: "function",
+              function: {
+                name: "submit_lead",
+                description: "Submits a new lead/contact form. Call this only after you have collected the user's name, email, and message/requirements.",
+                parameters: {
+                  type: "object",
+                  properties: {
+                    name: { type: "string", description: "Full name" },
+                    email: { type: "string", description: "Email address" },
+                    service_interested_in: { type: "string", description: "Service they are interested in" },
+                    message: { type: "string", description: "Their project details or requirements" },
                   },
+                  required: ["name", "email", "message"],
                 },
-              ],
+              },
             },
           ],
-          generationConfig: {
-            temperature: 0.7,
-            maxOutputTokens: 512,
-          },
+          temperature: 0.7,
+          max_tokens: 512,
         }),
       }
     );
 
-    if (!geminiRes.ok) {
-      const errText = await geminiRes.text();
-      let availableModels = "Could not fetch models";
-      try {
-        const modelsRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`);
-        if (modelsRes.ok) {
-          const modelsData = await modelsRes.json();
-          availableModels = modelsData.models.map((m: any) => m.name).join(", ");
-        }
-      } catch (e) {}
-
-      console.error("Gemini API error:", errText);
+    if (!grokRes.ok) {
+      const errText = await grokRes.text();
+      console.error("Grok API error:", errText);
       return NextResponse.json(
-        { error: "AI service error.", details: errText, availableModels },
+        { error: "AI service error.", details: errText },
         { status: 502 }
       );
     }
 
-    const data = await geminiRes.json();
-    const parts = data?.candidates?.[0]?.content?.parts;
+    const data = await grokRes.json();
+    const message = data?.choices?.[0]?.message;
 
     // Intercept function calls
-    if (parts?.[0]?.functionCall) {
-      const call = parts[0].functionCall;
-      if (call.name === "submit_lead") {
-        const result = await submitContactForm(call.args);
+    if (message?.tool_calls && message.tool_calls.length > 0) {
+      const toolCall = message.tool_calls[0];
+      if (toolCall.function.name === "submit_lead") {
+        const args = JSON.parse(toolCall.function.arguments);
+        const result = await submitContactForm(args);
         return NextResponse.json({
           reply: result.success
             ? "Thank you! I have successfully submitted your details to our team. We'll be in touch very soon."
@@ -102,7 +95,7 @@ export async function POST(req: NextRequest) {
     }
 
     const reply =
-      parts?.[0]?.text ??
+      message?.content ??
       "I'm sorry, I couldn't generate a response. Please contact us directly at info@reemdigitech.com.";
 
     return NextResponse.json({ reply });
