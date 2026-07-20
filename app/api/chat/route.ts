@@ -83,11 +83,17 @@ export async function POST(req: NextRequest) {
       const toolCall = message.tool_calls[0];
       if (toolCall.function.name === "submit_lead") {
         const args = JSON.parse(toolCall.function.arguments);
+        
+        // Zod requires this field, so provide a fallback if the AI omits it
+        if (!args.service_interested_in) {
+          args.service_interested_in = "Not sure yet";
+        }
+        
         const result = await submitContactForm(args);
         return NextResponse.json({
           reply: result.success
             ? "Thank you! I have successfully submitted your details to our team. We'll be in touch very soon."
-            : "Sorry, I had trouble submitting your details automatically. Please use our contact form page instead.",
+            : `Sorry, I had trouble submitting your details automatically: ${result.message} Please check and try again, or use our contact form page instead.`,
         });
       }
     }
