@@ -5,10 +5,10 @@ import type { ChatApiRequest } from "@/types/chatbot";
 
 export async function POST(req: NextRequest) {
   try {
-    const apiKey = process.env.GROK_API_KEY;
+    const apiKey = process.env.GROQ_API_KEY;
     if (!apiKey) {
       return NextResponse.json({ 
-        reply: `SYSTEM DIAGNOSTIC: GROK_API_KEY is missing from Vercel Environment Variables.` 
+        reply: `SYSTEM DIAGNOSTIC: GROQ_API_KEY is missing from Vercel Environment Variables.` 
       });
     }
 
@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Build the conversation history in Grok/OpenAI expected format
+    // Build the conversation history in Groq/OpenAI expected format
     const formattedMessages = [
       { role: "system", content: CHATBOT_SYSTEM_PROMPT },
       ...messages.map((msg) => ({
@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
     ];
 
     const grokRes = await fetch(
-      "https://api.x.ai/v1/chat/completions",
+      "https://api.groq.com/openai/v1/chat/completions",
       {
         method: "POST",
         headers: {
@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
           "Authorization": `Bearer ${apiKey}`,
         },
         body: JSON.stringify({
-          model: "grok-4.5",
+          model: "llama3-70b-8192",
           messages: formattedMessages,
           tools: [
             {
