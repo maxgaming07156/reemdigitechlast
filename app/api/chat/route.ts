@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
           "Authorization": `Bearer ${apiKey}`,
         },
         body: JSON.stringify({
-          model: "llama3-70b-8192",
+          model: "llama-3.3-70b-versatile",
           messages: formattedMessages,
           tools: [
             {
@@ -69,9 +69,9 @@ export async function POST(req: NextRequest) {
 
     if (!grokRes.ok) {
       const errText = await grokRes.text();
-      console.error("Grok API error:", errText);
+      console.error("Groq API error:", errText);
       return NextResponse.json({ 
-        reply: `SYSTEM DIAGNOSTIC: The Grok API rejected the request. Details: ${errText}` 
+        reply: `SYSTEM DIAGNOSTIC: The Groq API rejected the request. Details: ${errText}` 
       });
     }
 
