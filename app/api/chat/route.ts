@@ -7,10 +7,9 @@ export async function POST(req: NextRequest) {
   try {
     const apiKey = process.env.GROK_API_KEY;
     if (!apiKey) {
-      return NextResponse.json(
-        { error: "AI service not configured." },
-        { status: 503 }
-      );
+      return NextResponse.json({ 
+        reply: `SYSTEM DIAGNOSTIC: GROK_API_KEY is missing from Vercel Environment Variables.` 
+      });
     }
 
     const body: ChatApiRequest = await req.json();
@@ -71,10 +70,9 @@ export async function POST(req: NextRequest) {
     if (!grokRes.ok) {
       const errText = await grokRes.text();
       console.error("Grok API error:", errText);
-      return NextResponse.json(
-        { error: "AI service error.", details: errText },
-        { status: 502 }
-      );
+      return NextResponse.json({ 
+        reply: `SYSTEM DIAGNOSTIC: The Grok API rejected the request. Details: ${errText}` 
+      });
     }
 
     const data = await grokRes.json();
